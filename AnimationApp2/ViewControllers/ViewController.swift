@@ -28,7 +28,16 @@ final class ViewController: UIViewController {
     }
 
     @IBAction func startAnimation() {
+        
         let currentAnimation = Animations.getAnimation()
+        
+        animationNameLabel.text = "present: \(currentAnimation.animationName)"
+        animationCurveLabel.text = "curve: \(currentAnimation.curveName)"
+        animationDelayLabel.text = "delay: \(String(format: "%.2f", currentAnimation.delay))"
+        animationForceLabel.text = "force: \(String(format: "%.2f", currentAnimation.force))"
+        animationDurationLabel.text = "duration: \(String(format: "%.2f", currentAnimation.duration))"
+        
+        runButton.setTitle("Run \(currentAnimation.animationName)", for: .normal)
         
         animationView.animation = currentAnimation.animationName
         animationView.curve = currentAnimation.curveName
@@ -36,13 +45,6 @@ final class ViewController: UIViewController {
         animationView.duration = currentAnimation.duration
         animationView.delay = currentAnimation.delay
         animationView.animate()
-        
-        runButton.setTitle("Run \(currentAnimation.animationName)", for: .normal)
-        animationNameLabel.text = "present: \(currentAnimation.animationName)"
-        animationCurveLabel.text = "curve: \(currentAnimation.curveName)"
-        animationDelayLabel.text = "delay: \(String(format: "%.2f", currentAnimation.delay))"
-        animationForceLabel.text = "force: \(String(format: "%.2f", currentAnimation.force))"
-        animationDurationLabel.text = "duration: \(String(format: "%.2f", currentAnimation.duration))"
     }
     
 }
