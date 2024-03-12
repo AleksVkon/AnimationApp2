@@ -13,6 +13,12 @@ final class ViewController: UIViewController {
     @IBOutlet var animationView: SpringView!
     @IBOutlet var runButton: UIButton!
     
+    @IBOutlet var animationNameLabel: UILabel!
+    @IBOutlet var animationCurveLabel: UILabel!
+    @IBOutlet var animationForceLabel: UILabel!
+    @IBOutlet var animationDurationLabel: UILabel!
+    @IBOutlet var animationDelayLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +37,12 @@ final class ViewController: UIViewController {
         animationView.delay = currentAnimation.delay
         animationView.animate()
         
-        runButton.tex
+        runButton.setTitle("Run \(currentAnimation.animationName)", for: .normal)
+        animationNameLabel.text = "present: \(currentAnimation.animationName)"
+        animationCurveLabel.text = "curve: \(currentAnimation.curveName)"
+        animationDelayLabel.text = "delay: \(String(format: "%.2f", currentAnimation.delay))"
+        animationForceLabel.text = "force: \(String(format: "%.2f", currentAnimation.force))"
+        animationDurationLabel.text = "duration: \(String(format: "%.2f", currentAnimation.duration))"
     }
     
 }
